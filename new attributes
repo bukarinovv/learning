@@ -1,0 +1,5 @@
+from collections import Counter
+
+data = Counter('aksjaskfjsklfjdslkfjajfopewtoieqpwdpqworiiqjskanvmcxbmpewrqopkqwlmdzczmxvmvlnjpjqpkqzxvmbowiqeorewi')
+data.__dict__['min_values'] = lambda: [x for x in data.items() if x[1] == data.most_common()[-1][1]]
+data.max_values = lambda: list(filter(lambda x: x[1] == data.most_common()[0][1], data.items()))
