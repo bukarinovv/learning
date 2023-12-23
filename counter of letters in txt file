@@ -1,0 +1,5 @@
+from collections import Counter
+with open('pythonzen.txt', 'r', encoding='u8') as file:
+    text = map(str.strip, file.readlines())
+l = Counter([letter.lower() for line in text for letter in line if letter.isalpha()])
+[print(f'{k}: {v}') for k, v in sorted(l.items())]
