@@ -1,0 +1,15 @@
+import csv
+import json
+from collections import Counter
+
+with open('quarter1.csv', encoding='u8') as f1, open('quarter2.csv', encoding='u8') as f2, open('quarter3.csv', encoding='u8') as f3, open('quarter4.csv', encoding='u8') as f4:
+    a, b, c, d = [list(csv.reader(x))[1:] for x in (f1, f2, f3, f4)]
+with open('prices.json', encoding='u8') as f5:
+    e = json.load(f5)
+s = {}
+for i in (a, b, c, d):
+    for j in i:
+        s[j[0]] = s.get(j[0], 0) + sum(map(int, j[1:]))
+for k, v in s.items():
+    s[k] = v * e[k]
+print(Counter(s).total())
