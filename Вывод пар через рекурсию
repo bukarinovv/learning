@@ -1,0 +1,16 @@
+def dict_travel(n):     
+    def inner(n):
+        res = []
+        for k, v in n.items():
+            if isinstance(v, dict):
+                r = {}
+                for i in v:
+                    r[k + "." + i] = v[i]
+                res.extend(inner(r))
+            else:
+                res.append((k, v))
+        return res
+    [print(f'{k}: {v}') for k, v in sorted(inner(n))]
+data = {'d': 1, 'b': {'c': 30, 'a': 10, 'b': 20}, 'a': 100}
+
+dict_travel(data)
