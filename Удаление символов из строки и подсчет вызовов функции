@@ -1,0 +1,3 @@
+def remove_marks(text, mark):
+    remove_marks.__dict__['count'] = remove_marks.__dict__.get('count', 0) + 1
+    return [text := text.replace(i, '') for i in mark][-1] if mark else text
