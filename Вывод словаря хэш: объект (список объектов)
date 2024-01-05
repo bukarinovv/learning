@@ -1,0 +1,9 @@
+def hash_as_key(data):
+    d = {}
+    for i in data:
+        d.setdefault(hash(i), []).append(i)
+    return {k: v[0] if len(v) == 1 else v for k, v in d.items()}
+
+data = [-1, -2, -3, -4, -5]
+
+print(hash_as_key(data))
