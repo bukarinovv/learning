@@ -1,0 +1,8 @@
+import json
+with open('food_services.json', encoding='u8') as file:
+    l, res = list(json.load(file)), {}
+    for i in l:
+        res.setdefault(i['TypeObject'], {}).setdefault((i['Address'], i['Name']), i["SeatsCount"])
+    for k, v in sorted(res.items()):
+        name, quantity = max(v.items(), key=lambda x: x[1])
+        print(f'{k}: {name[1]}, {quantity}')
